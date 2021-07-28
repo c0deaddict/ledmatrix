@@ -11,6 +11,7 @@ void setupUdp() {
     }
 }
 
+// TODO: add a timeout to clear display (if no text came through after udp).
 void handleUdp() {
     int packetSize = udpSocket.parsePacket();
     if (packetSize) {

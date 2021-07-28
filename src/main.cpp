@@ -18,3 +18,6 @@ void loop() {
     handleUdp();
     textLoop();
 }
+
+void stop() {
+}

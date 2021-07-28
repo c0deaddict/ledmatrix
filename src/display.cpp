@@ -1,6 +1,8 @@
 #include <espbase.h>
 #include "display.h"
 
+int brightness = LED_DEFAULT_BRIGHTNESS;
+
 U8G2_MAX7219_64X8_F_4W_SW_SPI u8g2(
     /* rotation */ U8G2_R0, // no rotation
     /* clock */ D5,
@@ -17,11 +19,11 @@ void setupDisplay() {
 
 Setting brightnessSetting(
     "brightness",
-    [](JsonVariant& value) {
-        value.set(LED_DEFAULT_BRIGHTNESS);
+    [](JsonDocument &doc, const char *name) {
+        doc[name] = brightness;
     },
     [](JsonVariant value) {
-        int brightness = constrain(value.as<int>(), 0, 255);
+        brightness = constrain(value.as<int>(), 0, 255);
         u8g2.setContrast(brightness);
         return true;
     }

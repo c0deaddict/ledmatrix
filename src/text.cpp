@@ -95,8 +95,8 @@ void textLoop() {
 
 Setting scrollWaitSetting(
     "scrollWait",
-    [](JsonVariant& value) {
-        value.set(scrollWait);
+    [](JsonDocument &doc, const char *name) {
+        doc[name] = scrollWait;
     },
     [](JsonVariant value) {
         int wait = value.as<int>();
@@ -111,8 +111,8 @@ Setting scrollWaitSetting(
 
 Setting scrollSpeedSetting(
     "scrollSpeed",
-    [](JsonVariant& value) {
-        value.set(scrollSpeed);
+    [](JsonDocument &doc, const char *name) {
+        doc[name] = scrollSpeed;
     },
     [](JsonVariant value) {
         int speed = value.as<int>();
@@ -127,8 +127,8 @@ Setting scrollSpeedSetting(
 
 Setting defaultShowTimeSetting(
     "showTime",
-    [](JsonVariant& value) {
-        value.set(defaultShowTime);
+    [](JsonDocument &doc, const char *name) {
+        doc[name] = defaultShowTime;
     },
     [](JsonVariant value) {
         int time = value.as<int>();
